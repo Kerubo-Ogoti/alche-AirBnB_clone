@@ -60,7 +60,7 @@ UUID
 Datetime
 Unittest
 Authors
-Laetiticia Mizero
+Leatitia Mizero
 Kerubo Faith Ogoti
 Usage
 
