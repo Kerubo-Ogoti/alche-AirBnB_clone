@@ -1,6 +1,6 @@
 
 #!/usr/bin/python3
-# Defines the BaseModel class for all project models."""
+"""Defines the BaseModel class for all project models."""
 
 import uuid
 from datetime import datetime
