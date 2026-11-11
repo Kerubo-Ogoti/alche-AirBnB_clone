@@ -4,6 +4,7 @@
 
 import uuid
 from datetime import datetime
+
 from models import storage
 
 
@@ -17,10 +18,27 @@ class BaseModel:
                 if key == "__class__":
                     continue
                 if key in ("created_at", "updated_at"):
-                    value = datetime.strptime(
-                        value, "%Y-%m-%dT%H:%M:%S.%f"
-                    )
+                    if isinstance(value, str):
+                        try:
+                            value = datetime.strptime(
+                                value, "%Y-%m-%dT%H:%M:%S.%f"
+                            )
+                        except ValueError:
+                            value = datetime.strptime(
+                                value, "%Y-%m-%dT%H:%M:%S"
+                            )
                 setattr(self, key, value)
+            self.id = getattr(self, "id", str(uuid.uuid4()))
+            self.created_at = getattr(
+                self,
+                "created_at",
+                datetime.now(),
+            )
+            self.updated_at = getattr(
+                self,
+                "updated_at",
+                self.created_at,
+            )
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
