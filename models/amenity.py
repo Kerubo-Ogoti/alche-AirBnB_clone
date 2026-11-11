@@ -7,6 +7,8 @@ from models.base_model import BaseModel
 class Amenity(BaseModel):
     """Represents an amenity available in a place."""
 
+    name = ""
+
     def __init__(self, *args, **kwargs):
         """Initialize a new amenity instance."""
         self.name = ""

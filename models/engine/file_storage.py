@@ -38,6 +38,7 @@ class FileStorage:
         with open(self.__file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
 
+        self.__objects.clear()
         for key, value in data.items():
             class_name = value.get("__class__")
             if class_name is None:

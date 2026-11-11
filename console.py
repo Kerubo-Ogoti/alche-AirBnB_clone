@@ -32,6 +32,12 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing when the user enters an empty line."""
         pass
 
+    def precmd(self, line):
+        """Normalize whitespace-only input to an empty command."""
+        if not line.strip():
+            return ""
+        return line
+
     def do_quit(self, arg):
         """Quit command to exit the program."""
         return True
